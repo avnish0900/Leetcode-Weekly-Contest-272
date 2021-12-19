@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool palin(string str){
+        string rev = str;
+        reverse(str.begin(), str.end());
+        return str == rev;
+    }
+    string firstPalindrome(vector<string>& words) {
+        for(string str: words){
+            if(palin(str)){
+                return str;
+            }
+        }
+        return "";
+    }
+};
