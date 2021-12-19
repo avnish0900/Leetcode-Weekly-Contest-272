@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int kIncreasing(vector<int>& arr, int k) {
+        int ans = 0;
+        for(int i = 0; i < k; i++){
+            vector<int> dis;
+            for(int j = i; j < arr.size(); j+=k){
+                if(dis.size() == 0 or dis.back() <= arr[j]){
+                    dis.push_back(arr[j]);
+                }
+                else{
+                    auto pos = upper_bound(dis.begin(), dis.end(), arr[j]) - dis.begin();
+                    dis[pos] = arr[j];
+                }
+            }
+            ans += dis.size();
+        }
+        return arr.size() - ans;
+    }
+};
